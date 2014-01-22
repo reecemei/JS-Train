@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>slider to object</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        #slider{overflow: hidden;}
+        #slider ul{list-style: none;overflow: hidden;clear: both;}
+        #slider ul li{float: left;}
+    </style>
+</head>
+<body>
+    <div id="slider">
+        <ul>
+            <li><a href="#"><img src="images/slider001.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/slider002.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/slider003.jpg" alt=""/></a></li>
+        </ul>
+    </div>
+
+    <script src="script/lib/jquery-1.10.2.min.js"></script>
+    <script>
+        function Slider(id){
+            this.container = $(id);
+            this.list = this.container.find('li');
+            this.imgs = this.container.find('img');
+        }
+
+        Slider.prototype.init = function(){
+            this.container.css({width: this.imgs.width(), height: this.imgs.height()});
+        };
+
+        var slider = new Slider('#slider');
+        slider.init();
+    </script>
+</body>
+</html>

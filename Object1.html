@@ -5,6 +5,57 @@
 </head>
 <body>
 <script>
+
+//    var name = 'jjf001';
+//    //console.log(window.name);
+//
+//    var screen = {
+//        width: 200,
+//        height: 40,
+//        show: function(){
+//            console.log(this.width);
+//            console.log('i am show');
+//        }
+//    };
+//
+//    screen.show();
+//
+//    function Screen(){
+//
+//    }
+//
+//    // ()代表执行
+//    //函数，如果用“()”执行之，则是普通函数；如果new它，就是构造函数
+//    //类和实例的区别
+//
+//    var s = new Screen();
+//    s.width = 40;
+//    s.height = 50;
+
+    function Human(){
+        this.say = function(){
+            alert('i am a human');
+        }
+    }
+
+    function Girl(){
+        this.gender = 'g';
+        this.age = 19;
+    }
+
+    Girl.prototype = new Human();
+
+    function Student(){
+//        this.say = function(){
+//            alert('i am a student');
+//        }
+    }
+
+    Student.prototype = new Girl();
+
+    var student = new Student();
+    student.say();
+
 </script>
 </body>
 </html>

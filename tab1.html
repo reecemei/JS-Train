@@ -2,15 +2,70 @@
 <html>
 <head>
     <title>tab 1 demo</title>
+    <style>
+        /*div{*/
+            /*display: none;*/
+        /*}*/
+        div.active{
+            display: block;
+        }
+    </style>
 </head>
 <body>
 <div id="tab">
-    <ul>
-        <li>tab1</li>
-        <li>tab2</li>
-        <li>tab3</li>
-        <li>tab4</li>
+    <ul class="header">
+        <li><a href="#">tab1</a></li>
+        <li><a href="#">tab2</a></li>
+        <li><a href="#">tab3</a></li>
+        <li><a href="#">tab4</a></li>
     </ul>
+    <div>body1</div>
+    <div>body2</div>
+    <div>body3</div>
+    <div>body4</div>
 </div>
+<div id="tab1">
+    <ul class="header">
+        <li><a href="#">tab1</a></li>
+        <li><a href="#">tab2</a></li>
+        <li><a href="#">tab3</a></li>
+        <li><a href="#">tab4</a></li>
+    </ul>
+    <div>body1</div>
+    <div>body2</div>
+    <div>body3</div>
+    <div>body4</div>
+</div>
+
+<script>
+    function Tab(id){
+        this.container = document.getElementById(id);
+        this.lis = this.container.getElementsByTagName('li');
+        this.bds = this.container.getElementsByTagName('div');
+    }
+
+    Tab.prototype.init = function(){
+        var that = this;
+        for(var i = 0; i < this.lis.length; i++){
+            this.lis[i].onclick = (function(n){
+                return function(){
+                    for(var j = 0; j < that.lis.length; j++){
+                        that.lis[j].setAttribute('class', '');
+                        that.bds[j].setAttribute('class', '');
+                    }
+
+                    that.lis[n].setAttribute('class', 'active');
+                    that.bds[n].setAttribute('class', 'active');
+                }
+            })(i);
+        }
+    };
+
+    var tab = new Tab('tab');
+    tab.init();
+
+    var tab1 = new Tab('tab1');
+    tab1.init();
+</script>
 </body>
 </html>
