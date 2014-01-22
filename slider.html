@@ -4,15 +4,19 @@
     <title>slider to object</title>
     <style>
         *{margin: 0;padding: 0;}
-        #slider{overflow: hidden;}
-        #slider ul{list-style: none;overflow: hidden;clear: both;}
-        #slider ul li{float: left;}
+        #slider ul{list-style: none;position: relative;}
+        #slider ul li{position: absolute;}
     </style>
 </head>
 <body>
     <div id="slider">
         <ul>
             <li><a href="#"><img src="images/slider001.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/slider002.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/slider003.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/slider001.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/slider002.jpg" alt=""/></a></li>
+            <li><a href="#"><img src="images/slider003.jpg" alt=""/></a></li>
             <li><a href="#"><img src="images/slider002.jpg" alt=""/></a></li>
             <li><a href="#"><img src="images/slider003.jpg" alt=""/></a></li>
         </ul>
@@ -22,12 +26,36 @@
     <script>
         function Slider(id){
             this.container = $(id);
-            this.list = this.container.find('li');
+            this.ul = this.container.find('ul');
+            this.list = this.ul.find('li');
             this.imgs = this.container.find('img');
+            this.index = 0;
         }
 
         Slider.prototype.init = function(){
-            this.container.css({width: this.imgs.width(), height: this.imgs.height()});
+            var that = this;
+            setTimeout(function(){
+                if(that.index < that.list.length){
+                    that.index++;
+                }
+                else{
+                    that.index = 0;
+                }
+                //fadeIn, slow, normal, fast, 100
+                that.list.eq(that.index).fadeIn("slow").siblings().fadeOut("slow");
+
+                that.init();
+            }, 2000);
+
+            /*setInterval(function(){
+                if(that.index < that.list.length){
+                    that.index++;
+                }
+                else{
+                    that.index = 0;
+                }
+                that.list.eq(that.index).fadeIn().siblings().fadeOut();
+            }, 2000);*/
         };
 
         var slider = new Slider('#slider');

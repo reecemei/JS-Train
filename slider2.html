@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>slider to object</title>
+    <style>
+        *{margin: 0;padding: 0;}
+        #slider{overflow: hidden;}
+        #slider ul{list-style: none;clear: both;overflow: hidden;position: relative;}
+        #slider ul li{float: left;}
+    </style>
+</head>
+<body>
+<div id="slider">
+    <ul>
+        <li><a href="#"><img src="images/slider001.jpg" alt=""/></a></li>
+        <li><a href="#"><img src="images/slider002.jpg" alt=""/></a></li>
+        <li><a href="#"><img src="images/slider003.jpg" alt=""/></a></li>
+    </ul>
+</div>
+
+<script src="script/lib/jquery-1.10.2.min.js"></script>
+<script src="script/tween.js"></script>
+<script>
+    function Slider(id){
+        this.container = $(id);
+        this.ul = this.container.find('ul');
+        this.list = this.ul.find('li');
+        this.imgs = this.container.find('img');
+        this.index = 0;
+    }
+
+    Slider.prototype.init = function(){
+        this.container.css({width: this.imgs.width(), height: this.imgs.height()});
+        this.ul.css({width: this.imgs.width()*this.imgs.length, height: this.imgs.height()});
+        this.start();
+    };
+
+    Slider.prototype.start = function(){
+        var that = this;
+        setInterval(function(){
+            var b = -that.ul.offset().left,
+                    c = that.imgs.width(),
+                    d = 100,
+                    t = 0;
+
+            if(Math.abs(b) > that.imgs.width() * (that.imgs.length - 1)){
+                b = 0;
+            }
+
+            function run(){
+                that.ul.css({left: -Math.ceil(Tween.Linear(t,b,c,d))})
+                if(t<d){ t++; setTimeout(run, 10); }
+            }
+
+            run();
+        }, 2000);
+    };
+
+    var slider = new Slider('#slider');
+    slider.init();
+</script>
+</body>
+</html>

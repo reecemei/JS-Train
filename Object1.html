@@ -31,30 +31,48 @@
 //    var s = new Screen();
 //    s.width = 40;
 //    s.height = 50;
-
-    function Human(){
-        this.say = function(){
-            alert('i am a human');
-        }
-    }
-
-    function Girl(){
-        this.gender = 'g';
-        this.age = 19;
-    }
-
-    Girl.prototype = new Human();
-
-    function Student(){
+//
+//    function Human(){
 //        this.say = function(){
-//            alert('i am a student');
+//            alert('i am a human');
 //        }
+//    }
+//
+//    function Girl(){
+//        this.gender = 'g';
+//        this.age = 19;
+//        this.say = function(){
+//           alert('ffffffffffff');
+//        };
+//    }
+//
+//    Girl.prototype = new Human();
+//
+//    function Student(){
+////        this.say = function(){
+////            alert('i am a student');
+////        }
+//    }
+//
+//    Student.prototype = new Girl();
+//
+//    var student = new Student();
+//    student.say();
+//
+
+
+
+    function Fruit(){
+        this.color = 'red';
     }
 
-    Student.prototype = new Girl();
+    function Apple(){
+//        Fruit.call(this);
+//        Fruit();
+    }
 
-    var student = new Student();
-    student.say();
+    var apple = new Apple();
+    alert(apple.color);
 
 </script>
 </body>
