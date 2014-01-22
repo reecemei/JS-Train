@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+<p id="x1"></p>
+<p id="x2"></p>
+<script>
+     var a,b,c;
+    //ax^2+bx+c=0
+    a=1;
+    b=-2;
+    c=-3;
+    var d=b*b-4*a*c;
+    if(d>=0){
+        console.log("有实根！");
+        var x1=(-b+Math.pow(d,0.5))/(2*a);
+        var x2=(-b-Math.pow(d,0.5))/(2*a);
+        document.getElementById("x1").innerHTML="<h1>"+x1+"</h1>";
+        //document.getElementById("x2").innerText="<h1>"+x2+"</h1>";
+        document.getElementById("x1").style.color="#f00";
+        //document.getElementById("x2").style.fontSize="32px";
+        document.getElementById("x1").style.marginTop="100px";
+        window.m=0;
+        setInterval(function(){
+            document.getElementById("x1").style.marginTop=m+"px";
+            m+=3;
+            if(m>500) m=0;
+        },100)
+    }else{
+        console.log("没有实数根！");
+    }
+
+</script>
+</body>
+</html>

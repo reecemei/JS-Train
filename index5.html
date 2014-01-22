@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>5</title>
+    <style>
+        #slider{
+            width: 770px;
+            margin: 0 auto;
+        }
+        #slider img{
+            position: absolute;
+            border: none;
+            opacity: 0;
+        }
+        .hide{display: none;}
+        .show{display: block;}
+    </style>
+</head>
+<body>
+
+<div id="slider">
+    <img src="images/slider001.jpg" alt="图片1"/>
+    <img src="images/slider002.jpg" alt="图片2"/>
+    <img src="images/slider003.jpg" alt="图片3"/>
+</div>
+<script>
+    var imgs=document.getElementById("slider").getElementsByTagName("img");
+    var flag=0;
+    setInterval(function(){
+        for(var i=0;i<imgs.length;i++){
+            if(flag==i){
+                fadeIn(imgs[i]);
+            }else{
+               // imgs[i].setAttribute("class","hide");
+                imgs[i].style.opacity=0;
+            }
+        }
+        flag++;
+        if(flag>2) flag=0;
+    },3000);
+
+    function fadeIn(elem){
+        elem.style.opacity=0;
+        _fadeIn(elem);
+    }
+    function _fadeIn(elem){
+        elem.style.opacity=parseFloat(elem.style.opacity)+0.02;
+        if(elem.style.opacity<1){
+            setTimeout(function(){_fadeIn(elem)},20);
+        }
+    }
+
+</script>
+</body>
+</html>

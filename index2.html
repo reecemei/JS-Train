@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<p Id="x1"></p>
+<script>
+    var a,b,c;
+    a=1;
+    b=-2;
+    c=-3;
+    var d=b*b-4*a*c;
+    if(d>=0){
+      console.log("有实根");
+      var x1=(-b+Math.pow(d,0.5))/(2*a);
+      document.getElementById("x1").innerText="<h1>"+x1+"</h1>";
+      document.getElementById("x1").style.color="#f22";
+      document.getElementById("x1").style.marginBottom="13px";
+      window.n=0;
+      setInterval(function(){
+          document.getElementById("x1").style.marginTop=n+"px";
+          n+=3
+          if(n>500)n=0;
+      },100)
+    }else{
+        console.log("没有实根");
+    }
+</script>
+</body>
+</html>

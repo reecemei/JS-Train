@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>3</title>
+    <style>
+        input{width: 4em;}
+    </style>
+</head>
+<body>
+<input type="number" id="a" value="1"/>x^2+<input type="number" id="b" value="2"/>x+<input type="number" value="1" id="c"/>=0
+<input type="button" value="提交" onclick="fn()"/>
+<script>
+function $id (id){
+    return document.getElementById(id);
+}
+ function fn(){
+     var a = parseFloat($id("a").value);
+     var b = parseFloat($id("b").value);
+     var c = parseFloat($id("c").value);
+     if(isNaN(a)||isNaN(b)||isNaN(c)){
+         alert("数字无效！");
+     }else{
+         var d=b*b-4*a*c;
+         if(d>=0){
+             console.log("有解")
+         }else{
+             alert("无解")
+         }
+     }
+     console.log("a:"+a+"b:"+b+"c:"+c);
+     $id("c").getAttribute("value")
+ }
+</script>
+</body>
+</html>

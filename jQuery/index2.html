@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery</title>
+    <style>
+        #slider{
+            width: 770px;
+            margin: 0 auto;
+        }
+        #slider img{
+            position: absolute;
+            border: none;
+        }
+        .hide{display: none;}
+        .show{display: block;}
+    </style>
+</head>
+<body>
+
+<div id="slider">
+    <img src="../images/slider001.jpg" alt="图片1"/>
+    <img src="../images/slider002.jpg" alt="图片2"/>
+    <img src="../images/slider003.jpg" alt="图片3"/>
+</div>
+<img src="" alt=""/>
+<script src="../script/lib/jquery-1.10.2.min.js"></script>
+<script>
+    var flag=0;
+    var imgs=$("#slider img");
+    var s=setInterval(function(){
+        for(var i=0;i<imgs.size();i++){
+            if(i==flag){
+                $(imgs.eq(i)).fadeIn();
+            }
+            if(flag==0){
+                $(imgs.eq(imgs.size()-1)).fadeOut();
+            }else{
+                $(imgs.eq(flag-1)).fadeOut();
+            }
+        }
+        flag++;
+        if(flag>=imgs.size())flag=0;
+    },2000);
+    //  clearInterval(s)
+</script>
+</body>
+</html>
